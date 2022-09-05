@@ -1,4 +1,37 @@
 <html>
+	<head>
+<script>
+	//按键触发
+document.onkeydown = function(){
+    //禁止ctrl+u
+    if (event.ctrlKey && window.event.keyCode==85){
+    return false;
+    }
+    //禁止 F12
+    if (window.event && window.event.keyCode == 123) {
+    event.keyCode = 0;
+    event.returnValue = false;
+    }
+	//禁止ctrl+s
+    if (event.ctrlKey && window.event.keyCode==83){
+    return false;
+    }
+	//禁止 F5 
+    if (window.event && window.event.keyCode == 116) {
+    event.keyCode = 0;
+    event.returnValue = false;
+    }
+    }
+    //网站禁止右键
+    document.body.oncontextmenu = function() {
+    self.event.returnValue=false
+};
+//网站禁止选择文字
+    document.body.onselectstart = function() {
+    self.event.returnValue=false
+};
+</script>
+</head>
 	<body bgcolor="#E6E6FA">
 <textarea name="TextBox1" rows="40" cols="60" id="dm">打印：你好，世界</textarea>
 
