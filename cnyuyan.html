@@ -1,159 +1,74 @@
 <html>
-	<head>
-<script>
-	//按键触发
-document.onkeydown = function(){
-    //禁止ctrl+u
-    if (event.ctrlKey && window.event.keyCode==85){
-    return false;
-    }
-    //禁止 F12
-    if (window.event && window.event.keyCode == 123) {
-    event.keyCode = 0;
-    event.returnValue = false;
-    }
-	//禁止ctrl+s
-    if (event.ctrlKey && window.event.keyCode==83){
-    return false;
-    }
-	//禁止 F5 
-    if (window.event && window.event.keyCode == 116) {
-    event.keyCode = 0;
-    event.returnValue = false;
-    }
-    }
-    //网站禁止右键
-    document.body.oncontextmenu = function() {
-    self.event.returnValue=false
-};
-//网站禁止选择文字
-    document.body.onselectstart = function() {
-    self.event.returnValue=false
-};
-</script>
-</head>
 	<body bgcolor="#E6E6FA">
-<textarea name="TextBox1" rows="40" cols="60" id="dm">打印：你好，世界</textarea>
-
+	<textarea name="TextBox1" rows="15" cols="130" id="dm">打印：你好，世界</textarea>
+	<textarea name="TextBox2" rows="15" cols="130" id="shuchu">输出框
+</textarea>
 		<script language="javascript">
 			function testGG(){
 			var xxx = document.getElementById("dm");
 			var yyy = xxx.value.split("\n");
+
 			for(var i = 0;i < yyy.length;i++){
 			dm = yyy[i]
+
 			if(dm.indexOf("打印获得答复") !== -1)
 			{
-				alert(df)
+				document.getElementById("shuchu").value = df;
 			}
+			
 			if(dm.indexOf("打印：") !== -1)
 			{
 				var dy = dm.replace('打印：', '');
+				// 设置textarea的值
+				document.getElementById("shuchu").value = dy;
+				setTimeout(1000)
+
+			}
+			if(dm.indexOf("引用：弹窗") !== -1)
+			{
+				var a = 1
+			
+			}
+			if(dm.indexOf("弹出：") !== -1)
+			{
+			if(a==1){
+				var dy = dm.replace('弹出：', '');
 				alert(dy)
+			}
 			}
 			if(dm.indexOf("询问：") !== -1)
 			{
 			var xw = dm.replace('询问：', '');
 			df = prompt(xw)
 			}
-			if(dm.indexOf("弹出：") !== -1)
-			{
-			var x = dm.replace('弹出：', '');
-			confirm(x)
-			}
 			}
 			}
 		
 		</script>
-		<button type="button" onclick="testGG()">运行</button>
+		<style>
+		.button {
+		    background-color: #4CAF50; /* 绿色 */
+		    border: none;
+		    color: white;
+		    padding: 15px 32px;
+		    text-align: center;
+		    text-decoration: none;
+		    display: inline-block;
+		    font-size: 16px;
+		    margin: 4px 2px;
+		    cursor: pointer;
+		}
+		</style>
+		<script>
+			document.getElementById("p2").style.color="blue";
+			document.getElementById("p2").style.fontFamily="Arial";
+			document.getElementById("p2").style.fontSize="larger";
+		</script>
+		<div style="text-align:center">
+		<button type="button" class="button button2" onclick="testGG()">运行</button>
 	</body>
-	<style>
-	            html body {
-	                margin: 0px;
-	                padding: 0px;
-	            }
-	    
-	            .container {
-	                display: flex;
-	                justify-content: center;
-	                align-items: center;
-	                height: 100vh;
-	            }
-	    
-	    
-	            /* 文本渐变色 */
-	            .gradient-text {
-	                background-image: linear-gradient(90deg, #f66, #f90);
-	                -webkit-background-clip: text;
-	                background-clip: text;
-	                font-size: 38px;
-	                -webkit-animation: hue 5s linear infinite;
-	                animation: hue 5s linear infinite;
-	                -webkit-text-fill-color: transparent;
-	            }
-	    
-	            @keyframes hue {
-	                from {
-	                    filter: hue-rotate(0);
-	                }
-	    
-	                to {
-	                    filter: hue-rotate(-1turn);
-	                }
-	            }
-	        </style>
-	    
 	
 	</head>
-	<body background="https://img0.baidu.com/it/u=3028976837,1665106819&fm=253&fmt=auto&app=138&f=JPEG?w=749&h=500">
-		    <div class="container">
-		        <p class="gradient-text">/* <span class="text"></span> */</p>
-		    </div>
-	</body>
-	<script>
-	
-	    var array = [
-	'cn全中文编程语言',
-	'`让所有人都会编程`'
 
-	    ]
-	
-	    let con = document.getElementsByClassName('text')[0]
-	
-	    async function Init() {
-	        for (let i = 0; i < array.length; i++) {
-	            const item = array[i];
-	            await start(item)
-	            await back(item)
-	        }
-	    }
-	
-	    function start(item) {
-	        return new Promise((resolve, reject) => {
-	            var index = 0;
-	            var start_timer = setInterval(function () {
-	                con.append(item.charAt(index));
-	                if (index++ === item.length) {
-	                    clearInterval(start_timer)
-	                    resolve();
-	                }
-	            }, 100);
-	        })
-	    }
-	
-	    function back(item) {
-	        return new Promise((resolve, reject) => {
-	            var del_timer = setInterval(function () {
-	                item = item.slice(0, -1);
-	                con.innerHTML = item;
-	                if (con.innerHTML.toString().length == 0) {
-	                    clearInterval(del_timer)
-	                    resolve();
-	                }
-	            }, 50);
-	        })
-	    }
-	
-	    Init()
-		
-	</script>
+
 </html>
