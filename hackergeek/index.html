@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>html编辑器-为开发者而生</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style>
+            html body {
+                margin: 0px;
+                padding: 0px;
+            }
+    
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+    
+    
+            /* 文本渐变色 */
+            .gradient-text {
+                background-image: linear-gradient(90deg, #f66, #f90);
+                -webkit-background-clip: text;
+                background-clip: text;
+                font-size: 38px;
+                -webkit-animation: hue 5s linear infinite;
+                animation: hue 5s linear infinite;
+                -webkit-text-fill-color: transparent;
+            }
+    
+            @keyframes hue {
+                from {
+                    filter: hue-rotate(0);
+                }
+    
+                to {
+                    filter: hue-rotate(-1turn);
+                }
+            }
+        </style>
+    
+
+</head>
+<body background="https://img0.baidu.com/it/u=3028976837,1665106819&fm=253&fmt=auto&app=138&f=JPEG?w=749&h=500">
+	    <div class="container">
+	        <p class="gradient-text">/* <span class="text"></span> */</p>
+	    </div>
+</body>
+<script>
+
+    var array = [
+        'html5全新编辑器',
+        '`让前端开发这也可以开发桌面软件`'
+    ]
+
+    let con = document.getElementsByClassName('text')[0]
+
+    async function Init() {
+        for (let i = 0; i < array.length; i++) {
+            const item = array[i];
+            await start(item)
+            await back(item)
+        }
+    }
+
+    function start(item) {
+        return new Promise((resolve, reject) => {
+            var index = 0;
+            var start_timer = setInterval(function () {
+                con.append(item.charAt(index));
+                if (index++ === item.length) {
+                    clearInterval(start_timer)
+                    resolve();
+                }
+            }, 100);
+        })
+    }
+
+    function back(item) {
+        return new Promise((resolve, reject) => {
+            var del_timer = setInterval(function () {
+                item = item.slice(0, -1);
+                con.innerHTML = item;
+                if (con.innerHTML.toString().length == 0) {
+                    clearInterval(del_timer)
+                    resolve();
+                }
+            }, 50);
+        })
+    }
+
+    Init()
+</script>
+<style>
+.button {
+    background-color: #4CAF50; /* 绿色 */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+<script>
+	document.getElementById("p2").style.color="blue";
+	document.getElementById("p2").style.fontFamily="Arial";
+	document.getElementById("p2").style.fontSize="larger";
+</script>
+<div style="text-align:center">
+<button class="button button2" onclick="window.open('h.html')">进入</button>
+</div>
+</html>
