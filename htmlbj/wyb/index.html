@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">coded()</script>
+<title>HTML builder</title>
+</head>
+<script >
+     function download(){ 
+    var text = document.getElementById("textareaCode").value; 
+    var blob = new Blob([text], { type: "text/plain"}); 
+    var anchor = document.createElement("a"); 
+    anchor.download = "index.html"; 
+    anchor.href = window.URL.createObjectURL(blob); 
+    anchor.target ="_blank"; 
+    anchor.style.display = "none"; // just to be safe! 
+    document.body.appendChild(anchor); 
+    anchor.click(); 
+    document.body.removeChild(anchor); 
+} 
+</script>
+<body>
+<p style="text-align: center;"> 在线html builder编辑器</p>
+
+<div id = 'container' style="height: 500px; width: 1000px; bgcolor : #101010">
+<textarea autocomplete="off" id = "textareaCode" warp = "logical" spellcheck="false" stype="display:none;" style="height : 100%; width: 49%; background-color: #ffffc0; float: left" onkeypress="coded()">
+<!DOCTYPE html>
+<html>
+<head> </head>
+<body>
+<p>在线html builder编辑器</p>
+</body>
+</html>
+</textarea>
+<div id = 'textareaCoded' style="height : 100%; width : 49%; background-color: #ffffd0; float: right" wrap="virtual">
+<p id = 'html_code'>在线html builder编辑器</p>
+</div>
+</div>
+
+<div>
+<button type = 'button' id='bt' name = 'bt' onclick="coded()"> 运行</button>
+</div>
+
+<script>
+function coded(){
+var strCode = document.getElementById("textareaCode").value;
+document.getElementById("html_code").innerHTML = strCode;
+}
+</script>
+<button type = 'button' id='b' name = 'b' onclick=location.href="https://heikeling.github.io/htmlbj"> 官网</button>
+</body>
+<button type="button" onclick="download()">保存</button>
+</html>
